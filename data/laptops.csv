@@ -1,0 +1,175 @@
+serial_number,model,building,floor,cart,assigned_teacher,os_version,last_sync,battery_health,status
+CA-SSIANV,Dell Latitude 3420,Building A,1,A-Cart-1,Mr. Brooks,Windows 11 23H2,2026-10-08,73,Active
+CA-OP8TYX,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,Mr. Alvarez,Windows 11 23H2,2026-10-07,62,Active
+CA-GB5I2H,Dell Latitude 3420,Building A,1,A-Cart-1,Ms. Kim,Windows 11 22H2,2026-09-07,95,Active
+CA-K8SLRJ,Dell Latitude 3420,Building A,1,A-Cart-1,Ms. Cohen,Windows 11 23H2,2026-10-12,81,Active
+CA-SUL9EY,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,,Windows 11 23H2,2026-10-08,91,Active
+CA-31NYY6,Dell Latitude 3440,Building A,1,A-Cart-1,Ms. Patel,Windows 11 23H2,2026-10-14,79,Active
+CA-7IUPO0,Dell Latitude 3420,Building A,1,A-Cart-1,Ms. Kim,Windows 11 23H2,2026-10-17,82,Active
+CA-5XFF0B,Dell Latitude 3440,Building A,1,A-Cart-1,Ms. Patel,Windows 11 23H2,2026-10-19,62,Active
+CA-5VPU4L,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,Mr. Garcia,Windows 11 23H2,2026-10-11,73,Active
+CA-4VJO86,Dell Latitude 3440,Building A,1,A-Cart-1,Mr. Garcia,Windows 11 22H2,2026-10-08,61,Active
+CA-KK7O5W,Dell Latitude 3440,Building A,1,A-Cart-1,,Windows 11 22H2,2026-10-13,69,Active
+CA-12AQC1,Dell Latitude 3440,Building A,1,A-Cart-1,Ms. Haddad,Windows 11 23H2,2026-10-13,62,Active
+CA-L6KST8,Dell Latitude 3420,Building A,1,A-Cart-1,Mr. Johnson,Windows 11 23H2,2026-10-16,80,Active
+CA-1GWLHC,HP ProBook 440,Building A,1,A-Cart-1,Mr. Alvarez,Windows 11 23H2,2026-10-19,93,Active
+CA-ZQS5CA,HP ProBook 440,Building A,1,A-Cart-1,Ms. Rivera,Windows 11 23H2,2026-10-18,88,Active
+CA-LI6XBG,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,Mr. Johnson,Windows 11 23H2,2026-08-14,87,Active
+CA-V3JRRL,HP ProBook 440,Building A,1,A-Cart-1,Ms. Russo,Windows 11 23H2,2026-10-05,100,Active
+CA-FTCK70,HP ProBook 440,Building A,1,A-Cart-1,Ms. Cohen,Windows 11 23H2,2026-10-08,45,Active
+CA-J8LJ4F,Dell Latitude 3440,Building A,1,A-Cart-1,Mr.Nguyen,Windows 11 23H2,2026-10-17,81,Active
+CA-XYYWD9,Dell Latitude 3440,Building A,1,A-Cart-1,Ms. Kim,Windows 11 23H2,2026-10-08,85,Active
+CA-OPQ97F,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,,Windows 11 23H2,2026-06-30,61,Active
+CA-TBGOTI,HP ProBook 440,Building A,1,A-Cart-1,Ms. Cohen,Windows 11 23H2,2026-10-14,68,Active
+CA-XFRSTR,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,Mr. Alvarez,Windows 11 23H2,2026-10-19,52,Retired
+CA-YGD3MM,Dell Latitude 3440,Building A,1,A-Cart-1,,Windows 11 23H2,2026-10-17,100,Active
+CA-MJHG8P,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,Mr. Chen,Windows 11 23H2,2026-07-17,85,Active
+CA-ANR5PA,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,Ms. Russo,Windows 11 23H2,2026-10-16,98,Active
+CA-LHQZN6,Dell Latitude 3440,Building A,1,A-Cart-1,Ms. Cohen,Windows 11 23H2,2026-10-16,99,Active
+CA-OISKQ1,Lenovo ThinkPad 11e,Building A,1,A-Cart-1,Ms. Haddad,Windows 10 22H2,2026-10-10,70,Active
+CA-EAPUAX,Dell Latitude 3440,Building A,1,A-Cart-1,Mr. Diaz,Windows 11 23H2,2026-10-16,94,Active
+CA-PX11XJ,HP ProBook 440,Building A,1,A-Cart-1,Ms. Patel,Windows 11 23H2,2026-10-16,92,Active
+CA-3V2009,HP ProBook 440,Building A,2,A-Cart-2,Mr. Johnson,Windows 11 23H2,2026-10-16,94,Active
+CA-T1YA6E,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Mr. Johnson,Windows 10 22H2,2026-10-19,89,Active
+CA-X0QE6V,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Ms. Thompson,Windows 11 23H2,2026-10-13,64,Active
+CA-DWXSE1,HP ProBook 440,Building A,2,A-Cart-2,Mr. Diaz,Windows 11 23H2,2026-10-18,68,In Repair
+CA-KJ3C1V,Dell Latitude 3420,Building A,2,A-Cart-2,Mr. Johnson,Windows 11 23H2,2026-10-09,93,Active
+CA-WWNM1W,HP ProBook 440,Building A,2,A-Cart-2,Ms. Haddad,Windows 11 23H2,2026-10-16,92,Active
+CA-HVUDRF,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Ms. Cohen,Windows 11 23H2,2026-10-10,61,Active
+CA-FFTGXW,Dell Latitude 3420,Building A,2,A-Cart-2,Ms. Patel,Windows 11 23H2,2026-10-14,89,Active
+CA-VDHU3S,Dell Latitude 3420,Building A,2,A-Cart-2,,Windows 11 23H2,2026-10-16,61,Active
+CA-61UG7C,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,,Windows 11 23H2,2026-10-14,86,Active
+CA-J6KEVR,Dell Latitude 3440,Building A,2,A-Cart-2,Ms. Russo,Windows 11 23H2,2026-10-08,78,Active
+CA-B03SD9,Dell Latitude 3440,Building A,2,A-Cart-2,Mr. Brooks,Windows 11 23H2,2026-10-17,77,In Repair
+CA-6PHBH5,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Ms. Kim,Windows 11 23H2,2026-10-14,44,Active
+CA-GZ6GNF,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Ms. Haddad,Windows 11 23H2,2026-08-20,75,Active
+CA-KU32ZB,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Mr. Johnson,Windows 11 23H2,2026-10-06,65,Active
+CA-HNGXXH,Dell Latitude 3440,Building A,2,A-Cart-2,Mr. Diaz,Windows 11 23H2,2026-10-16,74,Active
+CA-ADQ1BW,Dell Latitude 3420,Building A,2,A-Cart-2,Ms. Rivera,Windows 11 23H2,2026-10-13,68,Active
+CA-TKAO25,HP ProBook 440,Building A,2,A-Cart-2,Ms. Kim,Windows 11 23H2,2026-10-10,78,In Repair
+CA-WHFD2F,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Mr. Garcia,Windows 11 23H2,2026-10-14,82,Active
+CA-YIELZV,Dell Latitude 3440,Building A,2,A-Cart-2,Ms. Patel,Windows 11 23H2,2026-08-05,62,Active
+CA-00ILKP,Dell Latitude 3440,Building A,2,A-Cart-2,Ms. Thompson,Windows 11 23H2,2026-08-10,85,Active
+CA-GZPBNR,HP ProBook 440,Building A,2,A-Cart-2,Mr. Alvarez,Windows 11 23H2,2026-10-18,89,In Repair
+CA-BLFWWC,HP ProBook 440,Building A,2,A-Cart-2,Ms. Rivera,Windows 11 23H2,2026-10-05,67,Active
+CA-GK1IC6,Dell Latitude 3440,Building A,2,A-Cart-2,Mr. Brooks,Windows 11 23H2,2026-07-28,85,Active
+CA-TBCHIM,Lenovo ThinkPad 11e,Building A,2,A-Cart-2,Mr. Alvarez,Windows 11 23H2,2026-10-09,82,Active
+CA-VRPI65,Dell Latitude 3440,Building A,2,A-Cart-2,Mr. Garcia,Windows 11 23H2,2026-10-16,72,Active
+CA-1PTIJ5,Dell Latitude 3420,Building A,2,A-Cart-2,Ms. Patel,Windows 11 23H2,2026-10-11,66,Active
+CA-T82IPP,HP ProBook 440,Building A,2,A-Cart-2,Ms. Rivera,Windows 11 23H2,2026-10-10,94,Active
+CA-Y97W4R,Dell Latitude 3440,Building A,2,A-Cart-2,Ms. Kim,Windows 11 23H2,2026-10-08,78,Active
+CA-F65DX6,Dell Latitude 3440,Building A,2,A-Cart-2,Ms. Rivera,Windows 11 23H2,2026-08-03,93,Active
+CA-4R4VGO,Lenovo ThinkPad 11e,Building A,3,A-Cart-3,,Windows 11 23H2,2026-10-17,98,In Repair
+CA-O8MYHS,Dell Latitude 3440,Building A,3,A-Cart-3,Ms. Russo,Windows 11 23H2,2026-10-19,97,Active
+CA-J36B16,Lenovo ThinkPad 11e,Building A,3,A-Cart-3,Ms. Thompson,Windows 10 22H2,2026-08-06,81,Active
+CA-3152OX,Dell Latitude 3420,Building A,3,A-Cart-3,Ms. Kim,Windows 11 23H2,2026-10-11,66,Active
+CA-P271NM,Dell Latitude 3440,Building A,3,A-Cart-3,Mr.Nguyen,Windows 11 23H2,2026-10-08,90,Active
+CA-DJX68Q,HP ProBook 440,Building A,3,A-Cart-3,Ms. Rivera,Windows 11 23H2,2026-10-06,78,In Repair
+CA-HWT8SR,Dell Latitude 3440,Building A,3,A-Cart-3,Mr. Alvarez,Windows 11 23H2,2026-10-16,33,In Repair
+CA-JHG0BV,Dell Latitude 3440,Building A,3,A-Cart-3,Ms. Thompson,Windows 11 23H2,2026-07-01,91,Active
+CA-7Y4IRN,Lenovo ThinkPad 11e,Building A,3,A-Cart-3,Ms. Cohen,Windows 11 23H2,2026-10-05,97,Retired
+CA-R8N8Q1,Dell Latitude 3420,Building A,3,A-Cart-3,Ms. Patel,Windows 11 23H2,2026-07-19,61,Active
+CA-B86U3S,Dell Latitude 3440,Building A,3,A-Cart-3,Ms. Okafor,Windows 11 23H2,2026-10-15,76,Active
+CA-DSNR6C,Lenovo ThinkPad 11e,Building A,3,A-Cart-3,Mr. Alvarez,Windows 11 23H2,2026-10-11,30,Active
+CA-8FTRJ7,Dell Latitude 3440,Building A,3,A-Cart-3,Ms. Russo,Windows 11 23H2,2026-10-09,55,Active
+CA-NRBFXK,Lenovo ThinkPad 11e,Building A,3,A-Cart-3,Mr. Johnson,Windows 11 22H2,2026-10-06,100,Active
+CA-5B2IJT,HP ProBook 440,Building A,3,A-Cart-3,Mr. Diaz,Windows 11 23H2,2026-10-13,98,Active
+CA-2FYQS3,HP ProBook 440,Building A,3,A-Cart-3,Ms. Rivera,Windows 11 23H2,2026-10-10,60,Active
+CA-89PJ7K,Dell Latitude 3420,Building A,3,A-Cart-3,Mr. Garcia,Windows 11 23H2,2026-10-09,93,Active
+CA-MGZPZR,Dell Latitude 3440,Building A,3,A-Cart-3,Mr. Brooks,Windows 11 23H2,2026-10-15,64,Active
+CA-MFQUK6,HP ProBook 440,Building A,3,A-Cart-3,,Windows 11 23H2,2026-10-06,99,Active
+CA-LKTLWG,Dell Latitude 3420,Building A,3,A-Cart-3,Ms. Haddad,Windows 10 22H2,2026-10-14,99,Active
+CA-YP9YFH,HP ProBook 440,Building A,3,A-Cart-3,,Windows 11 22H2,2026-10-12,64,Active
+CA-PVEXAC,Lenovo ThinkPad 11e,Building A,3,A-Cart-3,Ms. Patel,Windows 11 23H2,2026-09-08,86,Active
+CA-DGMOZJ,HP ProBook 440,Building A,3,A-Cart-3,Mr. Diaz,Windows 11 23H2,2026-10-16,100,Active
+CA-QCX2MZ,Dell Latitude 3420,Building A,3,A-Cart-3,Mr. Brooks,Windows 11 22H2,2026-10-09,68,Active
+CA-A9M8A6,Dell Latitude 3440,Building A,3,A-Cart-3,Mr. Diaz,Windows 11 23H2,2026-10-19,87,Active
+CA-GQX2SJ,Dell Latitude 3440,Building A,3,A-Cart-3,,Windows 10 22H2,2026-10-14,47,Active
+CA-4CNVRL,HP ProBook 440,Building A,3,A-Cart-3,Ms. Russo,Windows 11 23H2,2026-10-07,78,Active
+CA-52JONP,Dell Latitude 3440,Building A,3,A-Cart-3,Ms. Kim,Windows 11 23H2,2026-10-06,69,Active
+CA-ZEU47W,Lenovo ThinkPad 11e,Building A,3,A-Cart-3,Mr. Brooks,Windows 11 23H2,2026-10-07,65,Active
+CA-MBQD3T,Dell Latitude 3420,Building A,3,A-Cart-3,,Windows 11 23H2,2026-10-09,39,Retired
+CA-W4Q69P,Dell Latitude 3440,Building B,1,B-Cart-1,,Windows 11 23H2,2026-10-15,88,Active
+CA-63F8N0,HP ProBook 440,Building B,1,B-Cart-1,Ms. Okafor,Windows 11 23H2,2026-10-06,88,Active
+CA-DDFQ7V,HP ProBook 440,Building B,1,B-Cart-1,Ms. Kim,Windows 11 23H2,2026-10-12,67,Active
+CA-X9KJLT,Dell Latitude 3440,Building B,1,B-Cart-1,Ms. Cohen,Windows 11 22H2,2026-10-14,60,Active
+CA-VY5ONV,Lenovo ThinkPad 11e,Building B,1,B-Cart-1,Ms. Rivera,Windows 11 23H2,2026-10-07,84,Active
+CA-CIA3CR,HP ProBook 440,Building B,1,B-Cart-1,Ms. Okafor,Windows 11 23H2,2026-10-14,89,Active
+CA-3F8DH7,Dell Latitude 3420,Building B,1,B-Cart-1,Ms. Kim,Windows 11 23H2,2026-10-15,86,Active
+CA-INA4LY,Dell Latitude 3440,Building B,1,B-Cart-1,,Windows 11 23H2,2026-10-12,65,Active
+CA-7ER7DV,Dell Latitude 3420,Building B,1,B-Cart-1,,Windows 11 23H2,2026-10-18,74,Active
+CA-DSKXSI,Dell Latitude 3420,Building B,1,B-Cart-1,Mr. Alvarez,Windows 11 23H2,2026-10-19,67,Active
+CA-448V76,Lenovo ThinkPad 11e,Building B,1,B-Cart-1,Ms. Haddad,Windows 11 23H2,2026-07-25,98,Active
+CA-1HMDMF,Lenovo ThinkPad 11e,Building B,1,B-Cart-1,Ms. Rivera,Windows 11 23H2,2026-10-12,95,Active
+CA-W7AD3A,HP ProBook 440,Building B,1,B-Cart-1,Mr. Brooks,Windows 10 22H2,2026-10-11,75,Active
+CA-CETD9O,Dell Latitude 3440,Building B,1,B-Cart-1,Ms. Kim,Windows 11 23H2,2026-10-09,96,Active
+CA-Q9CJJZ,Lenovo ThinkPad 11e,Building B,1,B-Cart-1,Ms. Rivera,Windows 11 23H2,2026-10-14,63,Active
+CA-7CEX1Q,Dell Latitude 3420,Building B,1,B-Cart-1,Ms. Okafor,Windows 11 23H2,2026-07-21,70,Active
+CA-9F4WX1,Lenovo ThinkPad 11e,Building B,1,B-Cart-1,Mr. Chen,Windows 11 23H2,2026-10-18,91,Active
+CA-A8KT5P,Dell Latitude 3440,Building B,1,B-Cart-1,Mr. Chen,Windows 11 23H2,2026-10-13,61,Active
+CA-6L3EY8,HP ProBook 440,Building B,1,B-Cart-1,Ms. Cohen,Windows 11 23H2,2026-08-26,71,Active
+CA-ECT7J3,Dell Latitude 3420,Building B,1,B-Cart-1,Mr. Alvarez,Windows 11 23H2,2026-10-18,74,Active
+CA-U6W3BV,Dell Latitude 3420,Building B,1,B-Cart-1,Mr. Alvarez,Windows 10 22H2,2026-10-18,70,Active
+CA-S4AJB0,Dell Latitude 3440,Building B,1,B-Cart-1,Ms. Kim,Windows 10 22H2,2026-10-07,67,Active
+CA-7MIOJN,HP ProBook 440,Building B,1,B-Cart-1,Ms. Thompson,Windows 11 23H2,2026-10-06,71,Active
+CA-64PQET,Dell Latitude 3440,Building B,1,B-Cart-1,Ms. Cohen,Windows 11 23H2,2026-10-17,82,Active
+CA-I00VWC,Dell Latitude 3440,Building B,1,B-Cart-1,Ms. Cohen,Windows 10 22H2,2026-08-19,74,Active
+CA-O53TDM,HP ProBook 440,Building B,1,B-Cart-1,Mr. Johnson,Windows 11 23H2,2026-10-12,86,Active
+CA-E837G1,HP ProBook 440,Building B,1,B-Cart-1,Mr. Chen,Windows 11 23H2,2026-10-10,69,In Repair
+CA-FQ4UE5,Lenovo ThinkPad 11e,Building B,1,B-Cart-1,Ms. Okafor,Windows 11 23H2,2026-10-09,38,Active
+CA-36172R,Dell Latitude 3420,Building B,1,B-Cart-1,Mr. Johnson,Windows 11 23H2,2026-10-08,94,Active
+CA-OBLSFG,Dell Latitude 3420,Building B,1,B-Cart-1,,Windows 10 22H2,2026-10-05,94,Active
+CA-DAIGN6,Lenovo ThinkPad 11e,Building B,2,B-Cart-2,Ms. Haddad,Windows 11 23H2,2026-10-08,85,Active
+CA-D8SVS4,Dell Latitude 3440,Building B,2,B-Cart-2,Mr. Alvarez,Windows 11 23H2,2026-10-08,97,Active
+CA-YCL7OV,Lenovo ThinkPad 11e,Building B,2,B-Cart-2,Mr. Brooks,Windows 11 23H2,2026-10-10,66,Active
+CA-FKAQ2W,Dell Latitude 3420,Building B,2,B-Cart-2,Ms. Haddad,Windows 11 23H2,2026-10-11,67,Active
+CA-SDSGLO,Dell Latitude 3440,Building B,2,B-Cart-2,Mr. Johnson,Windows 11 23H2,2026-10-07,72,In Repair
+CA-57SMSI,Dell Latitude 3440,Building B,2,B-Cart-2,Ms. Kim,Windows 11 23H2,2026-10-08,94,Active
+CA-LF5QOE,HP ProBook 440,Building B,2,B-Cart-2,Ms. Rivera,Windows 11 23H2,2026-10-06,50,Active
+CA-8Y0EYH,HP ProBook 440,Building B,2,B-Cart-2,Mr. Diaz,Windows 11 23H2,2026-10-16,90,Active
+CA-8M1LZ5,Dell Latitude 3420,Building B,2,B-Cart-2,Ms. Russo,Windows 11 23H2,2026-10-18,97,Active
+CA-TXTVIO,Lenovo ThinkPad 11e,Building B,2,B-Cart-2,Mr. Diaz,Windows 10 22H2,2026-10-15,73,Active
+CA-GCJ8YP,Dell Latitude 3420,Building B,2,B-Cart-2,,Windows 11 23H2,2026-10-15,86,Active
+CA-147D6H,Dell Latitude 3420,Building B,2,B-Cart-2,Ms. Kim,Windows 11 23H2,2026-10-10,88,Active
+CA-N6JVC0,HP ProBook 440,Building B,2,B-Cart-2,Ms. Patel,Windows 11 23H2,2026-10-12,40,Active
+CA-DYGBZQ,HP ProBook 440,Building B,2,B-Cart-2,Ms. Okafor,Windows 11 23H2,2026-10-10,31,Active
+CA-OD8PVJ,Dell Latitude 3420,Building B,2,B-Cart-2,,Windows 11 23H2,2026-10-09,76,Active
+CA-3CEBUA,HP ProBook 440,Building B,2,B-Cart-2,Mr. Johnson,Windows 11 23H2,2026-10-18,76,Active
+CA-04SGTU,Dell Latitude 3440,Building B,2,B-Cart-2,Mr. Johnson,Windows 11 23H2,2026-10-05,76,In Repair
+CA-KS6UR4,Dell Latitude 3440,Building B,2,B-Cart-2,Ms. Haddad,Windows 11 23H2,2026-10-18,74,Active
+CA-NQNT8M,Dell Latitude 3420,Building B,2,B-Cart-2,Ms. Rivera,Windows 10 22H2,2026-10-06,92,Active
+CA-E1E315,HP ProBook 440,Building B,2,B-Cart-2,Ms. Russo,Windows 11 23H2,2026-10-16,66,Active
+CA-RL7GOX,Dell Latitude 3440,Building B,2,B-Cart-2,Ms. Rivera,Windows 11 23H2,2026-10-12,75,Active
+CA-ZAI86W,Dell Latitude 3420,Building B,2,B-Cart-2,Ms. Haddad,Windows 11 23H2,2026-07-29,99,Active
+CA-EUX4AC,HP ProBook 440,Building B,2,B-Cart-2,Mr. Brooks,Windows 11 23H2,2026-10-19,93,Active
+CA-QJP217,Dell Latitude 3420,Building B,2,B-Cart-2,Ms. Haddad,Windows 10 22H2,2026-10-15,83,Active
+CA-7DMEZQ,Lenovo ThinkPad 11e,Building B,2,B-Cart-2,Mr. Garcia,Windows 11 23H2,2026-10-07,91,Active
+CA-HSXV0P,HP ProBook 440,Building B,2,B-Cart-2,Mr. Brooks,Windows 11 23H2,2026-10-06,91,Active
+CA-E8XVD3,Dell Latitude 3440,Building B,2,B-Cart-2,,Windows 11 23H2,2026-10-07,91,Active
+CA-YRG3LP,Dell Latitude 3420,Building B,2,B-Cart-2,,Windows 11 23H2,2026-07-20,99,In Repair
+CA-DH5FWV,Dell Latitude 3440,Building B,4,B-Cart-4,Mr. Diaz,Windows 11 23H2,2026-10-11,80,Active
+CA-IF8C63,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Mr. Chen,Windows 11 22H2,2026-10-06,96,Active
+CA-SWDF1Q,Dell Latitude 3420,Building B,4,B-Cart-4,Ms. Cohen,Windows 11 23H2,2026-10-11,46,Active
+CA-2FDCR5,Dell Latitude 3420,Building B,4,B-Cart-4,Ms. Kim,Windows 11 23H2,2026-10-05,67,Active
+CA-XOV74Q,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Mr. Alvarez,Windows 11 23H2,2026-10-12,96,Active
+CA-1NWJCC,Dell Latitude 3440,Building B,4,B-Cart-4,Mr. Garcia,Windows 10 22H2,2026-10-13,94,Active
+CA-54YN4S,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Mr. Diaz,Windows 11 22H2,2026-10-05,84,Active
+CA-PTEVON,Dell Latitude 3440,Building B,4,B-Cart-4,Mr. Alvarez,Windows 11 23H2,2026-10-07,29,Active
+CA-AYHA1W,Dell Latitude 3420,Building B,4,B-Cart-4,Mr. Alvarez,Windows 11 23H2,2026-10-06,96,Active
+CA-8GUKID,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Ms. Cohen,Windows 11 22H2,2026-10-10,89,Active
+CA-LJ4AG7,Dell Latitude 3440,Building B,4,B-Cart-4,Ms. Okafor,Windows 11 23H2,2026-10-17,89,Active
+CA-8RAWH6,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Ms. Thompson,Windows 11 23H2,2026-10-13,89,Active
+CA-71RQGT,HP ProBook 440,Building B,4,B-Cart-4,Ms. Kim,Windows 11 22H2,2026-10-13,52,Active
+CA-7JQC6B,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Ms. Okafor,Windows 11 23H2,2026-10-17,84,Active
+CA-C2UHVY,Dell Latitude 3440,Building B,4,B-Cart-4,Mr. Brooks,Windows 11 23H2,2026-10-15,94,Active
+CA-Y5Z3CM,HP ProBook 440,Building B,4,B-Cart-4,Mr.Nguyen,Windows 11 23H2,2026-10-13,74,Active
+CA-TB1RHW,HP ProBook 440,Building B,4,B-Cart-4,Ms. Russo,Windows 11 23H2,2026-10-15,76,In Repair
+CA-TVGJQ6,HP ProBook 440,Building B,4,B-Cart-4,Mr. Brooks,Windows 11 23H2,2026-10-08,61,Active
+CA-SFITJW,Dell Latitude 3440,Building B,4,B-Cart-4,Mr. Garcia,Windows 11 23H2,2026-10-14,91,Active
+CA-OOWO6W,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Ms. Rivera,Windows 11 23H2,2026-10-12,84,Active
+CA-7L4NNU,Dell Latitude 3420,Building B,4,B-Cart-4,Ms. Thompson,Windows 11 23H2,2026-10-18,48,Retired
+CA-5RIYIA,Dell Latitude 3420,Building B,4,B-Cart-4,Mr. Garcia,Windows 11 22H2,2026-10-19,43,Active
+CA-RVBAQF,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Mr. Garcia,Windows 11 23H2,2026-10-07,64,Active
+CA-N6RMIQ,Dell Latitude 3440,Building B,4,B-Cart-4,,Windows 11 23H2,2026-10-16,75,Active
+CA-55O7HY,HP ProBook 440,Building B,4,B-Cart-4,Ms. Russo,Windows 11 22H2,2026-10-05,47,Active
+CA-V5D1XS,Lenovo ThinkPad 11e,Building B,4,B-Cart-4,Ms. Cohen,Windows 11 23H2,2026-10-07,74,Active
