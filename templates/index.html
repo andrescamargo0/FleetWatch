@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Upload · FleetWatch{% endblock %}
+
+{% block content %}
+  <h1>Upload a device export</h1>
+  <p>Upload a CSV export of your laptops. FleetWatch flags stale, outdated, low-battery, and missing devices.</p>
+
+  <form class="card" method="post" enctype="multipart/form-data">
+    <input type="file" name="export" accept=".csv">
+    <button type="submit">Upload and analyze</button>
+  </form>
+
+  <p class="muted">Currently showing: <strong>{{ source }}</strong></p>
+{% endblock %}

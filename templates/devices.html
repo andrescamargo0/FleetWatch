@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Devices · FleetWatch{% endblock %}
+
+{% block content %}
+  <h1>Devices</h1>
+
+  <form class="filters" method="get">
+    <input type="text" name="search" value="{{ search }}" placeholder="Serial number or teacher">
+    <select name="cart">
+      <option value="">All carts</option>
+      {% for c in carts %}
+        <option value="{{ c }}" {% if c == cart %}selected{% endif %}>{{ c }}</option>
+      {% endfor %}
+    </select>
+    <select name="flag">
+      <option value="">All laptops</option>
+      <option value="any" {% if flag == 'any' %}selected{% endif %}>Any problem</option>
+      <option value="stale" {% if flag == 'stale' %}selected{% endif %}>Stale</option>
+      <option value="outdated_os" {% if flag == 'outdated_os' %}selected{% endif %}>Outdated OS</option>
+      <option value="low_battery" {% if flag == 'low_battery' %}selected{% endif %}>Low battery</option>
+    </select>
+    <button type="submit">Filter</button>
+    <a href="{{ url_for('devices') }}">Clear</a>
+  </form>
+
+  <p class="muted">Showing {{ devices|length }} of {{ total }} laptops</p>
+
+  <div class="table-card">
+    <table>
+      <tr>
+        <th>Serial number</th><th>Cart</th><th>Teacher</th><th>OS</th>
+        <th>Last sync</th><th>Battery</th><th>Status</th><th>Problems</th>
+      </tr>
+      {% for d in devices %}
+        <tr>
+          <td>{{ d.serial_number }}</td>
+          <td>{{ d.cart }}</td>
+          <td>{{ d.assigned_teacher or "Unassigned" }}</td>
+          <td {% if d.outdated_os %}class="bad"{% endif %}>{{ d.os_version }}</td>
+          <td {% if d.stale %}class="bad"{% endif %}>{{ d.last_sync.strftime("%Y-%m-%d") }}</td>
+          <td {% if d.low_battery %}class="bad"{% endif %}>{{ d.battery_health }}%</td>
+          <td>{{ d.status }}</td>
+          <td>{{ d.flag_count }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="8">No laptops match those filters.</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}

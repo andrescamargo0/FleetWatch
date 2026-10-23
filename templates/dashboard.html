@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard · FleetWatch{% endblock %}
+
+{% block content %}
+  <h1>Fleet dashboard</h1>
+    <p class="muted">{{ totals.laptops }} of {{ totals.expected }} laptops checked in · {{ totals.needs_attention }} need attention</p>
+
+  <div class="stats">
+    <div class="stat"><span class="number">{{ totals.laptops }}</span>laptops reporting</div>
+    <a class="stat warn" href="{{ url_for('devices', flag='stale') }}"><span class="number">{{ totals.stale }}</span>stale (30+ days)</a>
+    <a class="stat warn" href="{{ url_for('devices', flag='outdated_os') }}"><span class="number">{{ totals.outdated_os }}</span>outdated OS</a>
+    <a class="stat warn" href="{{ url_for('devices', flag='low_battery') }}"><span class="number">{{ totals.low_battery }}</span>low battery</a>
+    <div class="stat bad"><span class="number">{{ totals.missing }}</span>missing</div>
+  </div>
+
+  <h2>By building</h2>
+  <div class="table-card">
+    <table>
+      <tr><th>Building</th><th>Total</th><th>Stale</th><th>Outdated OS</th><th>Low battery</th><th>Any problem</th></tr>
+      {% for row in by_building %}
+        <tr>
+          <td>{{ row.building }}</td>
+          <td>{{ row.total }}</td>
+          <td>{{ row.stale }}</td>
+          <td>{{ row.outdated_os }}</td>
+          <td>{{ row.low_battery }}</td>
+          <td>{{ row.any_flag }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <h2>By cart</h2>
+  <div class="table-card">
+    <table>
+      <tr><th>Cart</th><th>Total</th><th>Stale</th><th>Outdated OS</th><th>Low battery</th><th>Any problem</th></tr>
+      {% for row in by_cart %}
+        <tr>
+          <td><a href="{{ url_for('devices', cart=row.cart) }}">{{ row.cart }}</a></td>
+          <td>{{ row.total }}</td>
+          <td>{{ row.stale }}</td>
+          <td>{{ row.outdated_os }}</td>
+          <td>{{ row.low_battery }}</td>
+          <td>{{ row.any_flag }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+    <h2>Missing</h2>
+    <p class="muted">Owned by the school but not in this export. These may be lost, broken, or powered off.</p>
+  {% if missing %}
+    <div class="table-card">
+      <table>
+        <tr><th>Serial number</th><th>Cart</th><th>Model</th></tr>
+        {% for laptop in missing %}
+          <tr><td>{{ laptop.serial_number }}</td><td>{{ laptop.cart }}</td><td>{{ laptop.model }}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% else %}
+    <p>Every laptop in the inventory is in the export.</p>
+  {% endif %}
+{% endblock %}
