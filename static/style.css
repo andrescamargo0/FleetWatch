@@ -3,22 +3,28 @@
 /*  1. Design tokens  */
 /* Every color, radius, and shadow is named once here and reused below */
 :root {
-  --bg: #f5f5f7;
-  --surface: #ffffff;
-  --text: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --separator: rgba(0, 0, 0, 0.08);
-  --accent: #0071e3;
-  --accent-pressed: #0062c3;
-  --warning: #b25000;
-  --danger: #d70015;
-  --nav-bg: rgba(255, 255, 255, 0.72);
+    color-scheme: dark;
+  --bg: #2b2f36;
+  --surface: #3a3f47;
+  --text: #f2f2f5;
+  --text-secondary: #b4b8c0;
+  --separator: rgba(255, 255, 255, 0.1);
+  --accent: #4da3ff;
+  --accent-pressed: #3a8ee8;
+  --warning: #ffaa33;
+  --danger: #ff7f76;
+  --nav-bg: rgba(58, 63, 71, 0.72);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.2);
 
   --radius-lg: 18px;
   --radius-md: 12px;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  
+  /* One color per problem type, shared by the chart and the badges. */
+  --series-stale: #2a78d6;
+  --series-outdated-os: #eb6834;
+  --series-low-battery: #1baf7a;
 }
 
 /* Dark mode: same names, new values, so nothing else has to change. */
@@ -35,6 +41,9 @@
     --danger: #ff453a;
     --nav-bg: rgba(29, 29, 31, 0.72);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3);
+    --series-stale: #3987e5;
+    --series-outdated-os: #d95926;
+    --series-low-battery: #199e70;
   }
 }
 
@@ -43,7 +52,8 @@
 /*  2. Base and typography  */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0;
@@ -128,7 +138,7 @@ a {
 }
 
 main {
-  max-width: 62rem;
+  max-width: 66rem;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
 }
@@ -186,6 +196,75 @@ select:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.2);
+}
+
+a.button {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: transform 120ms var(--ease-out), background-color 150ms ease;
+}
+
+a.button.secondary {
+  color: var(--accent);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+a.button:active {
+  transform: scale(0.97);
+}
+
+/* A row with text on the left and a button on the right*/
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.toolbar p {
+  margin: 0;
+}
+
+/* The small teacher form inside each table row */
+.assign {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.assign input[type="text"] {
+  width: 9rem;
+  font-size: 0.9375rem;
+  padding: 0.3125rem 0.5rem;
+  /* Pull the box left so the name lines up with the other columns until you click it */
+  margin-left: -0.5rem;
+  background: transparent;
+}
+
+.assign input[type="text"]:focus {
+  background: var(--bg);
+}
+
+button.small {
+  font-size: 0.8125rem;
+  padding: 0.3125rem 0.75rem;
+}
+
+/* Save stays hidden until you click into that row's teacher box, so the table stays calm.
+   (Pressing Enter in the box also saves.) */
+.assign button {
+  opacity: 0;
+  transition: opacity 150ms ease, transform 120ms var(--ease-out);
+}
+
+.assign:focus-within button {
+  opacity: 1;
 }
 
 input[type="file"] {
@@ -278,7 +357,7 @@ table {
 th,
 td {
   text-align: left;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.875rem;
   white-space: nowrap;
 }
 
@@ -300,12 +379,132 @@ td.bad {
   font-weight: 600;
 }
 
+/*  6b. Problems chart and badges  */
+.chart-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.5rem 0 0.75rem;
+}
 
+.chart-header h2 {
+  margin: 0;
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 0.1875rem;
+  background: var(--separator);
+  border-radius: 999px;
+}
+
+.segmented button {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  background: transparent;
+  padding: 0.375rem 0.875rem;
+}
+
+.segmented button:active {
+  background: var(--surface);
+}
+
+.segmented button[aria-pressed="true"] {
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Chart.js sizes the chart to fill this box. */
+.chart-card {
+  position: relative;
+  height: 18rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+/* A small pill per problem: a colored dot plus the name in normal text. */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.125rem 0.625rem;
+  border-radius: 999px;
+  background: var(--bg);
+}
+
+.badge::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--dot);
+}
+
+.badge.stale {
+  --dot: var(--series-stale);
+}
+
+.badge.outdated-os {
+  --dot: var(--series-outdated-os);
+}
+
+.badge.low-battery {
+  --dot: var(--series-low-battery);
+}
 
 /*  7. Hover, only on devices with a real mouse  */
 @media (hover: hover) and (pointer: fine) {
+
+    /* Every button shrinks a little under the mouse, and a bit more when clicked. */
+  button,
+  a.button,
+  input[type="file"]::file-selector-button {
+    transition: transform 150ms var(--ease-out), background-color 150ms ease;
+  }
+
+  button:hover,
+  a.button:hover,
+  input[type="file"]::file-selector-button:hover {
+    transform: scale(0.96);
+  }
+
+  button:hover:active,
+  a.button:hover:active,
+  input[type="file"]::file-selector-button:hover:active {
+    transform: scale(0.92);
+  }
+
+    /* Text boxes and dropdowns get a soft outline in the accent color under the mouse.
+     It's lighter than the focus ring, so you can still tell which box you're typing in. */
+  input[type="text"]:hover:not(:focus),
+  select:hover:not(:focus) {
+    border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
   .topbar nav a:hover {
     color: var(--text);
+  }
+
+  a.button.secondary:hover {
+    background: var(--bg);
+  }
+
+  .assign input[type="text"]:hover {
+    background: var(--bg);
   }
 
   button:hover {
@@ -318,6 +517,11 @@ td.bad {
 
   a.stat:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .segmented button:not([aria-pressed="true"]):hover {
+    color: var(--text);
+    background: transparent;
   }
 }
 
@@ -335,5 +539,63 @@ td.bad {
     background: var(--surface);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+}
+
+/*  9. Page transitions  */
+/* When you click between pages, the browser animates from the old page to the new one
+   instead of flashing white. Works in Chrome, Edge, and Safari; other browsers just switch */
+@view-transition {
+  navigation: auto;
+}
+
+/* Give parts of the page names, so the browser can animate each one separately. */
+.topbar {
+  view-transition-name: topbar;
+}
+
+.topbar nav a.active {
+  view-transition-name: nav-pill;
+}
+
+main {
+  view-transition-name: page;
+}
+
+/* The gray pill behind the current tab slides over to the new tab. */
+::view-transition-group(nav-pill) {
+  animation-duration: 400ms;
+  animation-timing-function: var(--ease-out);
+}
+
+/* The old page fades out quickly, then the new one rises up into place. */
+::view-transition-old(page) {
+  animation: page-out 150ms ease both;
+}
+
+::view-transition-new(page) {
+  animation: page-in 400ms var(--ease-out) 60ms both;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* People who turn off animations in their settings get an instant switch. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

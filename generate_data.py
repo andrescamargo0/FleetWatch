@@ -30,7 +30,7 @@ CARTS = [
     {"cart": "A-Cart-3", "building": "Building A", "floor": 3},
     {"cart": "B-Cart-1", "building": "Building B", "floor": 1},
     {"cart": "B-Cart-2", "building": "Building B", "floor": 2},
-    {"cart": "B-Cart-4", "building": "Building B", "floor": 4},
+    {"cart": "B-Cart-3", "building": "Building B", "floor": 3},
 ]
 
 LAPTOPS_PER_CART = 30

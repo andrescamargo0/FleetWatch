@@ -4,7 +4,10 @@
 
 {% block content %}
   <h1>Fleet dashboard</h1>
+  <div class="toolbar">
     <p class="muted">{{ totals.laptops }} of {{ totals.expected }} laptops checked in · {{ totals.needs_attention }} need attention</p>
+    <a class="button secondary" href="{{ url_for('export_csv', flag='any') }}">Download flagged laptops</a>
+  </div>
 
   <div class="stats">
     <div class="stat"><span class="number">{{ totals.laptops }}</span>laptops reporting</div>
@@ -13,6 +16,25 @@
     <a class="stat warn" href="{{ url_for('devices', flag='low_battery') }}"><span class="number">{{ totals.low_battery }}</span>low battery</a>
     <div class="stat bad"><span class="number">{{ totals.missing }}</span>missing</div>
   </div>
+
+  <div class="chart-header">
+    <h2>Problems</h2>
+    <!-- Two buttons that switch the chart between buildings and carts. -->
+    <div class="segmented" role="group" aria-label="Group the chart by">
+      <button type="button" data-group="building" aria-pressed="true">By building</button>
+      <button type="button" data-group="cart" aria-pressed="false">By cart</button>
+    </div>
+  </div>
+  <div class="chart-card">
+    <canvas id="problems-chart" aria-label="Bar chart of stale, outdated OS, and low battery laptops. The same numbers are in the tables below."></canvas>
+  </div>
+
+  <!-- The chart's numbers, handed from Python to JavaScript as JSON. -->
+  <script id="chart-data" type="application/json">
+    {{ {"building": by_building, "cart": by_cart} | tojson }}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.js"></script>
+  <script src="{{ url_for('static', filename='chart.js') }}"></script>
 
   <h2>By building</h2>
   <div class="table-card">
@@ -48,8 +70,8 @@
     </table>
   </div>
 
-    <h2>Missing</h2>
-    <p class="muted">Owned by the school but not in this export. These may be lost, broken, or powered off.</p>
+  <h2>Missing</h2>
+  <p class="muted">Owned by the school but not in this export. These may be lost, broken, or powered off.</p>
   {% if missing %}
     <div class="table-card">
       <table>

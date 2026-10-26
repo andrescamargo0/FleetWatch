@@ -24,7 +24,17 @@
     <a href="{{ url_for('devices') }}">Clear</a>
   </form>
 
-  <p class="muted">Showing {{ devices|length }} of {{ total }} laptops</p>
+    <div class="toolbar">
+    <p class="muted">Showing {{ devices|length }} of {{ total }} laptops</p>
+    <a class="button secondary" href="{{ url_for('export_csv', search=search, cart=cart, flag=flag) }}">Download CSV</a>
+  </div>
+
+  <!-- The suggestions that pop up when you type in a Teacher box. -->
+  <datalist id="teachers">
+    {% for t in teachers %}
+      <option value="{{ t }}">
+    {% endfor %}
+  </datalist>
 
   <div class="table-card">
     <table>
@@ -36,12 +46,24 @@
         <tr>
           <td>{{ d.serial_number }}</td>
           <td>{{ d.cart }}</td>
-          <td>{{ d.assigned_teacher or "Unassigned" }}</td>
+          <td>
+            <form class="assign" method="post" action="{{ url_for('assign', serial=d.serial_number) }}">
+              <input type="text" name="teacher" value="{{ d.assigned_teacher }}" placeholder="Unassigned" list="teachers" aria-label="Teacher for {{ d.serial_number }}">
+              <button type="submit" class="small">Save</button>
+            </form>
+          </td>
           <td {% if d.outdated_os %}class="bad"{% endif %}>{{ d.os_version }}</td>
           <td {% if d.stale %}class="bad"{% endif %}>{{ d.last_sync.strftime("%Y-%m-%d") }}</td>
           <td {% if d.low_battery %}class="bad"{% endif %}>{{ d.battery_health }}%</td>
           <td>{{ d.status }}</td>
-          <td>{{ d.flag_count }}</td>
+          <td>
+            <div class="badges">
+              {% if d.stale %}<span class="badge stale">Stale</span>{% endif %}
+              {% if d.outdated_os %}<span class="badge outdated-os">Outdated OS</span>{% endif %}
+              {% if d.low_battery %}<span class="badge low-battery">Low battery</span>{% endif %}
+              {% if d.flag_count == 0 %}<span class="muted">None</span>{% endif %}
+            </div>
+          </td>
         </tr>
       {% else %}
         <tr><td colspan="8">No laptops match those filters.</td></tr>

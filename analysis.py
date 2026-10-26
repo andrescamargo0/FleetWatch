@@ -6,7 +6,6 @@ flag problem laptops, and summarize them by building and cart.
 
 """
 
-from datetime import date
 
 import pandas as pd
 
@@ -23,9 +22,12 @@ def load_devices(path):
     return df
 
 def flag_stale(df, today=None):
-    """True for laptops that haven't synced in more than STALE_AFTER_DAYS days."""
+    """An export is a snapshot, so by default "today" is the newest sync date in the
+    export itself, otherwise an old export would make
+    every laptop look stale.
+    """
     if today is None:
-        today = date.today()
+        today = df["last_sync"].max()
     days_since_sync = (pd.Timestamp(today) - df["last_sync"]).dt.days
     return days_since_sync > STALE_AFTER_DAYS
 

@@ -7,25 +7,38 @@ The FleetWatch website. Flask turns the functions in analysis.py into web pages:
   /devices   searchable, filterable table of every laptop
 
 """
-
+import os
 from pathlib import Path
 
 import pandas as pd
-from flask import Flask, flash, redirect, render_template, request, url_for
+from flask import Flask, Response, flash, redirect, render_template, request, url_for
 
 from analysis import add_flags, find_missing, load_devices, summarize
+from database import get_assignments, init_db, set_assignment
 
 app = Flask(__name__)
 # flash() messages are stored in a signed cookie, which needs a secret key
-app.secret_key = "dev"
+app.secret_key = os.environ.get("SECRET_KEY", "dev")
 
-DATA_DIR = Path("data")
+BASE_DIR = Path(__file__).parent
+DATA_DIR = BASE_DIR / "data"
 SAMPLE_EXPORT = DATA_DIR / "laptops.csv"
 UPLOADED_EXPORT = DATA_DIR / "uploaded_export.csv"
 EXPECTED_INVENTORY = DATA_DIR / "expected_inventory.csv"
 
 REQUIRED_COLUMNS = {"serial_number", "building", "cart", "assigned_teacher",
                     "os_version", "last_sync", "battery_health", "status"}
+
+FLAG_NAMES = {"stale": "Stale", "outdated_os": "Outdate OS", "low_battery": "Low battery"}
+
+init_db()
+
+def current_export_path():
+    """Use the most recent upload if there is one, otherwise the sample data."""
+    if UPLOADED_EXPORT.exists():
+        return UPLOADED_EXPORT
+    return SAMPLE_EXPORT
+
 
 def current_export_path():
     """Use the most recent upload if there is one, otherwise the sample data."""
@@ -35,12 +48,40 @@ def current_export_path():
 
 
 def get_flagged_devices():
-    """Load the current export and add the flag columns."""
+    """Load the current export, apply saved teacher assignments, and add the flag columns."""
     devices = load_devices(current_export_path())
-    flagged = add_flags(devices)
-    # pandas reads blank cells as NaN ("no value"), show them as empty text on the page
-    flagged["assigned_teacher"] = flagged["assigned_teacher"].fillna("")
-    return flagged
+    devices["assigned_teacher"] = devices["assigned_teacher"].fillna("")
+    # A saved assignment wins over whatever the export says.
+    # map() looks up each serial in the dictionary; serials with nothing saved become NaN,
+    # and fillna() puts the export's teacher back in for those.
+    saved = get_assignments()
+    devices["assigned_teacher"] = devices["serial_number"].map(saved).fillna(devices["assigned_teacher"])
+
+    return add_flags(devices)
+
+def filter_devices(flagged, search, cart, flag):
+    """Keep only the laptops that match the filters. Used by the table and the CSV download."""
+    shown = flagged
+    if search:
+        matches_serial = shown["serial_number"].str.contains(search, case=False, regex=False)
+        matches_teacher = shown["assigned_teacher"].str.contains(search, case=False, regex=False)
+        shown = shown[matches_serial | matches_teacher]
+    if cart:
+        shown = shown[shown["cart"] == cart]
+    if flag == "any":
+        shown = shown[shown["flag_count"] > 0]
+    elif flag in FLAG_NAMES:
+        shown = shown[shown[flag]]
+    return shown.sort_values(["flag_count", "cart"], ascending=[False, True])
+
+
+def read_filters():
+    """Read the filters from the URL, e.g. /devices?search=rivera&cart=A-Cart-1&flag=stale"""
+    return {
+        "search": request.args.get("search", "").strip(),
+        "cart": request.args.get("cart", ""),
+        "flag": request.args.get("flag", ""),
+    }
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -66,6 +107,7 @@ def index():
 
     return render_template("index.html", source=current_export_path().name)
 
+
 @app.route("/dashboard")
 def dashboard():
     flagged = get_flagged_devices()
@@ -81,8 +123,8 @@ def dashboard():
         "expected": len(expected),
         "needs_attention": int((flagged["flag_count"] > 0).sum()),
     }
-    # reset_index() turns the group names back into a normal column
-    # to_dict("records") makes a list of dictionaries, one per row, which Jinja can loop over
+    # reset_index() turns the group names back into a normal column;
+    # to_dict("records") makes a list of dictionaries, one per row, which Jinja can loop over.
     by_building = summarize(flagged, "building").reset_index().to_dict("records")
     by_cart = summarize(flagged, "cart").reset_index().to_dict("records")
 
@@ -97,35 +139,49 @@ def dashboard():
 @app.route("/devices")
 def devices():
     flagged = get_flagged_devices()
-
-    # Read the filters from the URL
-    search = request.args.get("search", "").strip()
-    cart = request.args.get("cart", "")
-    flag = request.args.get("flag", "")
-
-    shown = flagged
-    if search:
-        matches_serial = shown["serial_number"].str.contains(search, case=False, regex=False)
-        matches_teacher = shown["assigned_teacher"].str.contains(search, case=False, regex=False)
-        shown = shown[matches_serial | matches_teacher]
-    if cart:
-        shown = shown[shown["cart"] == cart]
-    if flag == "any":
-        shown = shown[shown["flag_count"] > 0]
-    elif flag in ("stale", "outdated_os", "low_battery"):
-        shown = shown[shown[flag]]
-
-    shown = shown.sort_values(["flag_count", "cart"], ascending=[False, True])
+    filters = read_filters()
+    shown = filter_devices(flagged, **filters)
 
     return render_template(
         "devices.html",
-        devices=shown.to_dict("records"),
-        carts=sorted(flagged["cart"].unique()),
-        search=search,
-        cart=cart,
-        flag=flag,
-        total=len(flagged),
+        devices = shown.to_dict("records"),
+        carts = sorted(flagged["cart"].unique()),
+        teachers = sorted(t for t in flagged["assigned_teacher"].unique() if t),
+        total = len(flagged),
+        **filters,
     )
+
+@app.route("/devices/<serial>/assign", methods=["POST"])
+def assign(serial):
+    teacher = request.form.get("teacher", "").strip()
+    set_assignment(serial, teacher)
+    if teacher:
+        flash(f"{serial} is now assigned to {teacher},")
+    else:
+        flash(f"{serial} is now unassigned.")
+    return redirect(request.referrer or url_for("devices"))
+
+@app.route("/export.csv")
+def export_csv():
+    shown = filter_devices(get_flagged_devices(), **read_filters())
+
+    # One readable "problems" column instead of three True/False columns.
+    shown = shown.copy()
+    shown["problems"] = shown.apply(
+        lambda row: ", ".join(name for col, name in FLAG_NAMES.items() if row[col]),
+        axis=1,
+    )
+    columns = ["serial_number", "building", "cart", "assigned_teacher",
+               "os_version", "last_sync", "battery_health", "status", "problems"]
+    csv_text = shown[columns].to_csv(index=False, date_format="%Y-%m-%d")
+
+    #attachment tells the browser to download the file instead of showing it.
+    return Response(
+        csv_text,
+        mimetype="text/csv",
+        headers={"Content-Disposition": "attachment; filename=fleetwatch_devices.csv"},
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
