@@ -8,6 +8,7 @@ The FleetWatch website. Flask turns the functions in analysis.py into web pages:
 
 """
 import os
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -59,13 +60,22 @@ def get_flagged_devices():
 
     return add_flags(devices)
 
-def filter_devices(flagged, search, cart, flag):
+def simplify(text):
+    """Lowercase and keep only letters and digits, so "Ms. Rivera", "ms rivera", and "ms.rivera" all match."""
+    return re.sub(r"[^a-z0-9]", "", text.lower())
+
+
+def filter_devices(flagged, search, building, cart, flag):
     """Keep only the laptops that match the filters. Used by the table and the CSV download."""
     shown = flagged
+    search = simplify(search)
     if search:
-        matches_serial = shown["serial_number"].str.contains(search, case=False, regex=False)
-        matches_teacher = shown["assigned_teacher"].str.contains(search, case=False, regex=False)
-        shown = shown[matches_serial | matches_teacher]
+        # Simplify every serial and teacher the same way, then look for the search inside them.
+        serials = shown["serial_number"].map(simplify)
+        teachers = shown["assigned_teacher"].map(simplify)
+        shown = shown[serials.str.contains(search, regex=False) | teachers.str.contains(search, regex=False)]
+    if building:
+        shown = shown[shown["building"] == building]
     if cart:
         shown = shown[shown["cart"] == cart]
     if flag == "any":
@@ -74,11 +84,11 @@ def filter_devices(flagged, search, cart, flag):
         shown = shown[shown[flag]]
     return shown.sort_values(["flag_count", "cart"], ascending=[False, True])
 
-
 def read_filters():
     """Read the filters from the URL, e.g. /devices?search=rivera&cart=A-Cart-1&flag=stale"""
     return {
         "search": request.args.get("search", "").strip(),
+        "building": request.args.get("building", ""),
         "cart": request.args.get("cart", ""),
         "flag": request.args.get("flag", ""),
     }
@@ -145,6 +155,7 @@ def devices():
     return render_template(
         "devices.html",
         devices = shown.to_dict("records"),
+        buildings=sorted(flagged["building"].unique()),
         carts = sorted(flagged["cart"].unique()),
         teachers = sorted(t for t in flagged["assigned_teacher"].unique() if t),
         total = len(flagged),

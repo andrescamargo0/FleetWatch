@@ -6,7 +6,19 @@
   <h1>Devices</h1>
 
   <form class="filters" method="get">
-    <input type="text" name="search" value="{{ search }}" placeholder="Serial number or teacher">
+    <!-- The search box, plus the teacher suggestions that search.js shows under it as you type -->
+    <div class="autocomplete">
+      <input type="text" id="search" name="search" value="{{ search }}" placeholder="Serial number or teacher"
+             autocomplete="off" role="combobox" aria-expanded="false" aria-controls="teacher-suggestions"
+             data-teachers='{{ teachers | tojson }}'>
+      <ul class="suggestions" id="teacher-suggestions" role="listbox" hidden></ul>
+    </div>
+    <select name="building">
+      <option value="">All buildings</option>
+      {% for b in buildings %}
+        <option value="{{ b }}" {% if b == building %}selected{% endif %}>{{ b }}</option>
+      {% endfor %}
+    </select>
     <select name="cart">
       <option value="">All carts</option>
       {% for c in carts %}
@@ -24,9 +36,9 @@
     <a href="{{ url_for('devices') }}">Clear</a>
   </form>
 
-    <div class="toolbar">
+  <div class="toolbar">
     <p class="muted">Showing {{ devices|length }} of {{ total }} laptops</p>
-    <a class="button secondary" href="{{ url_for('export_csv', search=search, cart=cart, flag=flag) }}">Download CSV</a>
+    <a class="button secondary" href="{{ url_for('export_csv', search=search, building=building, cart=cart, flag=flag) }}">Download CSV</a>
   </div>
 
   <!-- The suggestions that pop up when you type in a Teacher box. -->
@@ -70,4 +82,6 @@
       {% endfor %}
     </table>
   </div>
+
+  <script src="{{ url_for('static', filename='search.js') }}"></script>
 {% endblock %}

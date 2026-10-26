@@ -43,6 +43,18 @@ def test_saving_twice_keeps_one_row(client):
     client.post("/devices/CA-TEST01/assign", data={"teacher": "Second"})
     assert database.get_assignments() == {"CA-TEST01": "Second"}
 
+def test_search_ignores_spaces_and_dots(client):
+    # The data spells it "Ms. Rivera", but people type it all sorts of ways.
+    for typed in ["Ms. Rivera", "ms.rivera", "msrivera", "RIVERA"]:
+        page = client.get(f"/devices?search={typed}").get_data(as_text=True)
+        assert "Ms. Rivera" in page
+        assert "Showing 0 of" not in page
+
+def test_building_filter(client):
+    page = client.get("/devices?building=Building+B").get_data(as_text=True)
+    assert "B-Cart-1" in page
+    assert "A-Cart-1</td>" not in page
+
 
 def test_export_downloads_only_flagged_laptops(client):
     response = client.get("/export.csv?flag=any")
